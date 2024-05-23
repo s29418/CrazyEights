@@ -19,6 +19,22 @@ class CrazyEightsGame:
         for i in range(len(self.players)):
             self.players[i].hand = players_cards[i]
         self.discard_pile.append(self.deck.draw_card())
+        self.play_game()
+
+    def play_game(self):
+        while not self.check_winner():
+            self.play_turn(self.players[self.current_player])
+            self.current_player = (self.current_player + 1) % len(self.players)
+
+    def play_turn(self, player):
+        top_card = self.discard_pile[-1]
+        print(f"\n{player.name}, twoja kolej!")
+        print(f"Karta na wierzchu: {top_card}")
+
+        if player.name == "Gracz":
+            self.player_turn(player, top_card)
+        else:
+            self.bot_turn(player, top_card)
 
     def player_turn(self, player, top_card):
         if player.has_playable_card(top_card):
@@ -53,7 +69,7 @@ class CrazyEightsGame:
             player.draw_card(self.deck)
 
     def bot_turn(self, player, top_card):
-        if(player.has_playable_card(top_card)):
+        if player.has_playable_card(top_card):
             playable_cards = player.get_playable_cards(top_card)
             card = random.choice(playable_cards)
             print(f"{player.name} wykłada kartę: {card}")
