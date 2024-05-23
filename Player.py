@@ -13,3 +13,4 @@ class Player:
 
     def show_hand(self):
         return ", ".join([f"{rank}{suit}" for rank, suit in self.hand])
+
