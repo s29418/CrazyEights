@@ -1,6 +1,5 @@
 class Player:
 
-
     def __init__(self, name):
         self.name = name
         self.hand = []
@@ -12,5 +11,11 @@ class Player:
         self.hand.append(deck.draw_card())
 
     def show_hand(self):
-        return ", ".join([f"{rank}{suit}" for rank, suit in self.hand])
+        for rank, suit in self.hand:
+            return ", ".join([f"{rank}{suit}"])
 
+    def has_playable_card(self, top_card):
+        for rank, suit in self.hand:
+            if any(rank == '8' or rank == top_card[0] or suit == top_card[1]):
+                return True
+        return False
