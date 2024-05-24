@@ -5,14 +5,14 @@ from Deck import Deck
 
 class CrazyEightsGame:
 
-    def __init__(self, number_of_bots):
+    def __init__(self, number_of_bots, player_name):
         self.deck = Deck()
-        self.players = self.add_bots(number_of_bots)
+        self.players = self.add_bots(number_of_bots, player_name)
         self.current_player = 0
         self.start_game()
 
-    def add_bots(self, number_of_bots):
-        return [Player("Gracz")] + [Player(f"Bot {i + 1}") for i in range(number_of_bots)]
+    def add_bots(self, number_of_bots, player_name):
+        return [Player(player_name)] + [Player(f"Bot {i + 1}") for i in range(number_of_bots)]
 
     def start_game(self):
         players_cards = self.deck.deal_cards(len(self.players))
@@ -31,7 +31,7 @@ class CrazyEightsGame:
         print(f"\n{player.name}, twoja kolej!")
         print(f"Karta na wierzchu: {top_card}")
 
-        if player.name == "Gracz":
+        if not player.name.startswith("Bot"):
             self.player_turn(player, top_card)
         else:
             self.bot_turn(player, top_card)
