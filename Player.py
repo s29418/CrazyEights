@@ -5,10 +5,8 @@ class Player:
         self.hand = []
 
     def play_card(self, card):
-        card = (card[0].lower(), card[1].lower())  # Normalizacja do małych liter
-        print(f"Debug: Karta do zagrania: {card}")  # Debug
-        hand_lower = [(rank.lower(), suit.lower()) for rank, suit in self.hand]  # Normalizacja rąk
-        print(f"Debug: Ręka przed zagraniem: {hand_lower}")  # Debug
+        card = (card[0].lower(), card[1].lower())
+        hand_lower = [(rank.lower(), suit.lower()) for rank, suit in self.hand]
         card_index = hand_lower.index(card)
         return self.hand.pop(card_index)
 
@@ -32,5 +30,4 @@ class Player:
         for rank, suit in self.hand:
             if rank == '8' or rank == top_card[0] or suit == top_card[1]:
                 playable_cards.append((rank.lower(), suit.lower()))
-        print(f"Debug: Dla karty na wierzchu {top_card} możliwe karty do zagrania to: {playable_cards}")
         return playable_cards

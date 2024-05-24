@@ -14,6 +14,8 @@ class Deck:
         return [(rank, suit) for suit in suits for rank in ranks]
 
     def draw_card(self):
+        if not self.cards:
+            self.reshuffle_deck()
         return self.cards.pop()
 
     def deal_cards(self, number_of_players):
@@ -23,8 +25,18 @@ class Deck:
                 player.append(self.draw_card())
         return player_cards
 
-    def shuffle_deck(self):
-        top_card = self.discard_pile[-1]
-        self.cards = self.discard_pile[:-1]
+    def reshuffle_deck(self):
+        top_card = self.discard_pile.pop()
+        self.cards = self.discard_pile
         random.shuffle(self.cards)
         self.discard_pile = [top_card]
+
+    def add_to_discard_pile(self, card):
+        self.discard_pile.append(card)
+
+    def top_discard_card(self):
+        return self.discard_pile[-1]
+
+    def change_top_discard_suit(self, new_suit):
+        rank, _ = self.discard_pile[-1]
+        self.discard_pile[-1] = (rank, new_suit)
