@@ -3,16 +3,43 @@ from Player import Player
 from Deck import Deck
 
 
+def add_players():
+    while True:
+        num_players = int(input("Podaj liczbę graczy (1 lub 2): "))
+        if num_players not in [1, 2]:
+            raise ValueError("Niepoprawna liczba graczy.")
+        break
+
+    players = []
+
+    for i in range(num_players):
+        player_name = input(f"Podaj nazwę dla Gracza {i + 1}: ")
+        players.append(Player(player_name))
+
+    if num_players == 1:
+        max_bots = 3
+        min_bots = 1
+    else:
+        max_bots = 2
+        min_bots = 0
+
+    while True:
+        num_bots = int(input(f"Podaj liczbę botów ({min_bots} do {max_bots}): "))
+        if num_bots not in range(min_bots, max_bots + 1):
+            raise ValueError(f"Niepoprawna liczba botów.")
+        break
+
+    players += [Player(f"Bot {i + 1}") for i in range(num_bots)]
+    return players
+
+
 class CrazyEightsGame:
 
-    def __init__(self, number_of_bots, player_name):
+    def __init__(self):
         self.deck = Deck()
-        self.players = self.add_bots(number_of_bots, player_name)
+        self.players = add_players()
         self.current_player = 0
         self.start_game()
-
-    def add_bots(self, number_of_bots, player_name):
-        return [Player(player_name)] + [Player(f"Bot {i + 1}") for i in range(number_of_bots)]
 
     def start_game(self):
         players_cards = self.deck.deal_cards(len(self.players))
