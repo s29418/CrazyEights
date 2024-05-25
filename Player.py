@@ -31,3 +31,13 @@ class Player:
             if rank == '8' or rank == top_card[0] or suit == top_card[1]:
                 playable_cards.append((rank.lower(), suit.lower()))
         return playable_cards
+
+    def get_most_common_suit(self):
+        suit_counts = {'pik': 0, 'kier': 0, 'trefl': 0, 'karo': 0}
+        for rank, suit in self.hand:
+            if rank != '8':
+                suit_counts[suit] += 1
+        return max(suit_counts, key=suit_counts.get)
+
+    def get_number_of_cards(self):
+        return len(self.hand)
