@@ -2,6 +2,11 @@ from CrazyEightsGame import CrazyEightsGame
 
 
 def show_instructions():
+
+    """
+    Wyświetla instrukcje gry Crazy Eights.
+    """
+
     instructions = (
         "\n=== Crazy Eights (Szalone Ósemki) ===\n"
         "Crazy Eights to gra karciana, podobna do UNO, w której celem jest pozbycie się wszystkich swoich kart. "
@@ -35,6 +40,10 @@ def show_instructions():
 
 
 def main_menu():
+    """
+    Główne menu gry Crazy Eights.
+    """
+
     while True:
         print("\n=== Crazy Eights ===")
         print("1. Nowa gra")
@@ -48,7 +57,6 @@ def main_menu():
         elif choice == '2':
             show_instructions()
         elif choice == '3':
-            print("Dziękujemy za grę! Do zobaczenia!")
             break
         else:
             print("Nieprawidłowa opcja. Spróbuj ponownie.")

@@ -4,6 +4,13 @@ from Deck import Deck
 
 
 def add_players():
+    """
+    Dodaje graczy do gry.
+
+    Zwraca:
+    -------
+    list: Lista obiektów klasy Player reprezentujących graczy i botów.
+    """
     while True:
         num_players = int(input("Podaj liczbę graczy (1 lub 2): "))
         if num_players not in [1, 2]:
@@ -34,14 +41,47 @@ def add_players():
 
 
 class CrazyEightsGame:
+    """
+    Klasa reprezentująca grę w Crazy Eights.
+
+    Atrybuty:
+    ----------
+    deck : Deck
+        Talia kart używana w grze.
+    players : list
+        Lista obiektów klasy Player reprezentujących graczy.
+    current_player : int
+        Indeks aktualnego gracza.
+
+    Metody:
+    -------
+    start_game():
+        Rozpoczyna grę poprzez rozdanie kart i ustawienie pierwszej karty na stosie kart odrzuconych.
+    play_game():
+        Przeprowadza główną pętlę gry, aż do wyłonienia zwycięzcy.
+    play_turn(player: Player):
+        Rozgrywa turę danego gracza.
+    player_turn(player: Player, top_card: tuple):
+        Rozgrywa turę gracza.
+    bot_turn(player: Player, top_card: tuple):
+        Rozgrywa turę bota.
+    check_winner() -> bool:
+        Sprawdza, czy któryś z graczy wygrał grę.
+    """
 
     def __init__(self):
+        """
+        Inicjalizuje nową grę w Crazy Eights.
+        """
         self.deck = Deck()
         self.players = add_players()
         self.current_player = 0
         self.start_game()
 
     def start_game(self):
+        """
+        Rozpoczyna grę poprzez rozdanie kart i ustawienie pierwszej karty na stosie kart odrzuconych.
+        """
         players_cards = self.deck.deal_cards(len(self.players))
         for i in range(len(self.players)):
             self.players[i].hand = players_cards[i]
@@ -49,11 +89,22 @@ class CrazyEightsGame:
         self.play_game()
 
     def play_game(self):
+        """
+        Przeprowadza główną pętlę gry, aż do wyłonienia zwycięzcy.
+        """
         while not self.check_winner():
             self.play_turn(self.players[self.current_player])
             self.current_player = (self.current_player + 1) % len(self.players)
 
     def play_turn(self, player):
+        """
+        Rozgrywa turę danego gracza.
+
+        Parametry:
+        ----------
+        player : Player
+            Gracz, którego tura jest rozgrywana.
+        """
         top_card = self.deck.top_discard_card()
         print(f"\n{player.name}({player.get_number_of_cards()}), twoja kolej!")
         print(f"Karta na wierzchu: {top_card}")
@@ -64,6 +115,16 @@ class CrazyEightsGame:
             self.bot_turn(player, top_card)
 
     def player_turn(self, player, top_card):
+        """
+        Rozgrywa turę gracza.
+
+        Parametry:
+        ----------
+        player : Player
+            Gracz, którego tura jest rozgrywana.
+        top_card : tuple
+            Karta na wierzchu stosu kart odrzuconych.
+        """
         while True:
             print("\nTwoje karty: " + player.show_hand())
             choice = input("Wybierz kartę, którą chcesz zagrać (w formacie: wartość kolor np. '4 kier') \n"
@@ -95,6 +156,16 @@ class CrazyEightsGame:
                     print("Podałeś kartę w niepoprawnym formacie. Proszę podać kartę jeszcze raz.")
 
     def bot_turn(self, player, top_card):
+        """
+        Rozgrywa turę bota.
+
+        Parametry:
+        ----------
+        player : Player
+            Gracz, którego tura jest rozgrywana.
+        top_card : tuple
+            Karta na wierzchu stosu kart odrzuconych.
+        """
         if player.has_playable_card(top_card):
             playable_cards = player.get_playable_cards(top_card)
             card = random.choice(playable_cards)
@@ -109,6 +180,13 @@ class CrazyEightsGame:
             player.draw_card(self.deck)
 
     def check_winner(self):
+        """
+        Sprawdza, czy któryś z graczy wygrał grę.
+
+        Zwraca:
+        -------
+        bool: True, jeśli któryś z graczy wygrał, False w przeciwnym razie.
+        """
         for player in self.players:
             if len(player.hand) == 0:
                 print(f"{player.name} wygrywa!")
