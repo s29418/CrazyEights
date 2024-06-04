@@ -2,7 +2,7 @@
 
 <em>Crazy Eights</em> to gra karciana, podobna do UNO, w której celem jest pozbycie się wszystkich swoich kart. Gracz, który jako pierwszy pozbędzie się wszystkich swoich kart, wygrywa!
 
-<hr class="solid">
+<hr>
 
 <b><h3>=== Zasady gry: ===</b></h3>
 1. == Rozdanie kart: ==
@@ -22,7 +22,7 @@
 <b>== Ustawienia gry: ==</b>
    - Gra pozwala na wybór ilości przeciwników: od jednego do trzech botów. Miłej zabawy!
 
-<hr class="solid">
+<hr>
 
 
 <b><h3> === Instrukcja Uruchomienia === </b></h3>
@@ -35,10 +35,6 @@
 3. == Uruchom grę ==
    - python Main.py
 
-<hr class="solid">
+<hr>
   
 <b><h3> MIŁEJ GRY! </b></h3>
-
-hr.solid {
-  border-top: 1px solid #bbb;
-}
