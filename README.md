@@ -1,8 +1,10 @@
-=== Crazy Eights (Szalone Ósemki) ===
+<h1> Crazy Eights (Szalone Ósemki) </h1>
 
-Crazy Eights to gra karciana, podobna do UNO, w której celem jest pozbycie się wszystkich swoich kart. Gracz, który jako pierwszy pozbędzie się wszystkich swoich kart, wygrywa!
+<em>Crazy Eights</em> to gra karciana, podobna do UNO, w której celem jest pozbycie się wszystkich swoich kart. Gracz, który jako pierwszy pozbędzie się wszystkich swoich kart, wygrywa!
 
-=== Zasady gry: ===
+<hr class="solid">
+
+<b><h3>=== Zasady gry: ===</b></h3>
 1. == Rozdanie kart: ==
    - Każdemu z graczy rozdaje się po 8 kart.
    - Jedna karta zostaje odłożona na stos jako karta początkowa.
@@ -17,13 +19,13 @@ Crazy Eights to gra karciana, podobna do UNO, w której celem jest pozbycie się
    - Gra kończy się, gdy jeden z graczy pozbędzie się wszystkich swoich kart. Ten gracz wygrywa.
 
 
-== Ustawienia gry: ==
+<b>== Ustawienia gry: ==</b>
    - Gra pozwala na wybór ilości przeciwników: od jednego do trzech botów. Miłej zabawy!
 
+<hr class="solid">
 
 
-
-== Instrukcja Uruchomienia == 
+<b><h3> === Instrukcja Uruchomienia === </b></h3>
 1. == Upewnij się, że masz zainstalowanego Pythona ==
    - Jeśli nie masz, możesz go pobrać stąd: https://www.python.org/downloads/
 2. == Uruchom konsolę i sklonuj repozytorium ==
@@ -32,5 +34,11 @@ Crazy Eights to gra karciana, podobna do UNO, w której celem jest pozbycie się
    - Do 
 3. == Uruchom grę ==
    - python Main.py
+
+<hr class="solid">
   
-<b> MIŁEJ GRY! </b>
+<b><h3> MIŁEJ GRY! </b></h3>
+
+hr.solid {
+  border-top: 1px solid #bbb;
+}
