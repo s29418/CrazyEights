@@ -32,7 +32,7 @@
    - git clone https://github.com/s29418/CrazyEights.git
    - cd CrazyEights
 3. == Uruchom grę ==
-   - python Main.py
+   - py Main.py
 
 <hr>
   
