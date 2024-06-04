@@ -31,10 +31,9 @@
 2. == Uruchom konsolę i sklonuj repozytorium ==
    - git clone https://github.com/s29418/CrazyEights.git
    - cd CrazyEights
-   - Do 
 3. == Uruchom grę ==
    - python Main.py
 
 <hr>
   
-<b><h3> MIŁEJ GRY! </b></h3>
+<b><h3> Udanej zabawy! </b></h3>
